@@ -1,0 +1,223 @@
+\documentclass[pdftex,12pt,a4paper]{article}
+
+\usepackage{graphicx}  
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{breakcites}
+\usepackage{indentfirst}
+\usepackage{pgfgantt}
+\usepackage{pdflscape}
+\usepackage{float}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage[cmex10]{amsmath}
+\usepackage{stfloats}
+\usepackage{multirow}
+
+\renewcommand{\refname}{REFERENCES}
+\linespread{1.3}
+
+\usepackage{mathtools}
+%\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\thispagestyle{empty}
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\textbf{}\\
+\textbf{\Large{ISTANBUL TECHNICAL UNIVERSITY}}\\
+\vspace{0.5cm}
+\textbf{\Large{COMPUTER ENGINEERING DEPARTMENT}}\\
+\vspace{2cm}
+\textbf{\Large{BLG 242E\\ DIGITAL CIRCUITS LABORATORY\\ EXPERIMENT REPORT}}\\
+\vspace{2.8cm}
+\begin{table}[ht]
+\centering
+\Large{
+\begin{tabular}{lcl}
+\textbf{EXPERIMENT NO}  & : & 4 \\
+\textbf{EXPERIMENT DATE}  & : & 6.03.2020 \\
+\textbf{LAB SESSION}  & : & FRIDAY - 13.30 \\
+\textbf{GROUP NO}  & : & G12 \\
+\end{tabular}}
+\end{table}
+\vspace{1cm}
+\textbf{\Large{GROUP MEMBERS:}}\\
+\begin{table}[ht]
+\centering
+\Large{
+\begin{tabular}{rcl}
+150180001  & : & MEHMET ARİF DEMİRTAŞ \\
+150180002  & : & BARIŞ EMRE MİŞE \\
+150180009  & : & ERCE CAN BEKTÜRE \\
+\end{tabular}}
+\end{table}
+\vspace{2.8cm}
+\textbf{\Large{SPRING 2020}}
+
+\end{center}
+
+\end{titlepage}
+
+\thispagestyle{empty}
+\addtocontents{toc}{\contentsline {section}{\numberline {}FRONT COVER}{}}
+\addtocontents{toc}{\contentsline {section}{\numberline {}CONTENTS}{}}
+\setcounter{tocdepth}{4}
+\tableofcontents
+\clearpage
+
+\setcounter{page}{1}
+
+\section{INTRODUCTION}
+
+In this experiment, we will implement logic circuits for arithmetic operations on signed and unsigned binary numbers. In addition, we will use the Arithmetic Logic Unit (ALU) integrated circuit to carry out basic operations, logical and artihmetical.
+
+\section{MATERIALS AND METHODS}
+
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[trim={0 0 0 0},clip,width=0.25\textwidth]{7404inv.png}	
+	\caption{7404 - Hex Inverter}
+		\includegraphics[trim={0 0 0 0},clip,width=0.35\textwidth]{7408and.png}	
+	\caption{7408 - Quadruple 2-input Positive-AND Gates}
+		\includegraphics[trim={0 0 0 0},clip,width=0.35\textwidth]{7432or.png}	
+	\caption{7432 - Quadruple 2-input Positive-OR Gates}
+		\label{fig1}
+	\cite{ref1}
+\end{figure}
+		\begin{figure}[ht]
+		\centering
+	\includegraphics[trim={0 0 0 0},clip,width=0.45\textwidth]{83.png}	
+	\caption{7483 - 4-bit Binary Full Adder}
+	\includegraphics[trim={0 0 0 0},clip,width=0.45\textwidth]{86.png}	
+	\caption{74xx86 - Quadruple 2-input Positive Exclusive Or (XOR) Gates}
+	\includegraphics[trim={0 0 0 0},clip,width=0.45\textwidth]{174.png}	
+	\caption{74xx174 - Hex D-Type Flip-Flops}
+	\includegraphics[trim={0 0 0 0},clip,width=0.46\textwidth]{181.png}
+	\caption{74xx181 - 74xx181 - 4-Bit Arithmetic Logic Unit}
+		\label{fig1}
+	\cite{ref1}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\subsection{PART 1}
+We built the given half adder circuit on CADET using one XOR gate and one AND gate. Circuit had 2 inputs and 2 outputs. The outputs were 1-The summation of two inputs and 2- The carry output of the summation. We validated the circuit we designed with truth table.
+    \begin{gather*}
+    Sum = a\xor{\mathbin{\oplus}}b
+    \text{\quad Summation of half adder}
+    \\
+    Cout = a \cdot b
+    \text{\quad Carry output of half adder}
+    \end{gather*}
+
+\subsection{PART 2}
+We implemented a full adder circuit on CADET using the circuit we built in part 1 and adding carry input. Circuit had 3 inputs and 2 outputs. The outputs were 1-The summation of two inputs and 2- The carry output of the summation. We validated the circuit we designed with truth table.
+
+    \begin{align*}
+   Sum = a\xor{\mathbin{\oplus}}b\xor{\mathbin{\oplus}}c
+    \text{\quad Summation of full adder}&&\\
+     Cout = a\xor{\mathbin{\oplus}}b \cdot Cin + a \cdot b
+    \text{\quad Carry output of full adder}
+   && 
+    \end{align*}
+
+
+\begin{align*}
+\end{align*}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+
+\subsection{PART 3}
+We built the given circuit on CADET, this circuit took two 4-bit binary numbers and one selector as input. The selector input determines whether we do subtraction or summation on these binary numbers. Selector acts as the carry input in the 4-bit Full Adder. After that with the given binary numbers we performed signed-unsigned, addition and subtraction operations on the circuit. In sıgned operations overflow occurred in some cases. In unsigned addition most of the cases had carry output and in unsigned subtraction some of the test cases we have seen that we can not represent some of the results.
+%%%%%%%%%%%%%%%
+\subsection{PART 4}
+We tried to implement the given digital system by using Arithmetic Logic Unit (ALU), D Flip-Flop, seven-segment display .Arithmetic Logic Unit works in negative logic. There were 14 inputs for ALU: 4 selector inputs for the operation, two 4-bit binary numbers; we took one of the 4-bit numbers from the output of the D Flip-Flop, a Mode Select input to choose between arithmetic operation or logical operation and one carry input. There were 3 inputs for D Flip-Flop one clock signal connected to the switch, one clear input to set all the bits to zero and the output of ALU which is a 4-bit binary number. We then connected the output of D Flip-Flop to the seven segment display and tested some test cases.
+\begin{align*}
+F1(a, b, c) = \overline{a} \cdot \overline{c} + b \cdot c = \bar a \bar b \bar c + \bar a b \bar c + \bar a b c + a b c\\
+F2(a, b, c) = \overline{a} \cdot \overline{b} \cdot \overline{c} + a \cdot b = \bar a \bar b \bar c + a b c + a b \bar c
+\end{align*}
+\clearpage
+\section{RESULTS}
+\subsection{PART 1}
+\begin{figure}[ht]
+\centering
+	\includegraphics[trim={0 0 0 0},clip,width=0.65\textwidth]{part1.png}	%%quinemcclusky
+	\caption{Circuit of the Half Adder.}
+	\includegraphics[trim={0 0 0 0},clip,width=0.65\textwidth]{tt1.png}	%%quinemcclusky
+	\caption{Truth table of Half Adder.}
+	\label{fig1}
+\end{figure}
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{PART 2}
+\begin{align*}
+\end{align*}
+\begin{figure}[ht]
+\centering
+	\includegraphics[trim={0 0 0 0},clip,width=0.8\textwidth]{part2.png}	%%devre
+	%%\includegraphics[trim={0 0 0 0},clip,width=0.3\textwidth]{part1.7.tt.jpeg}
+	\caption{Circuit of the Full Adder.}
+	\includegraphics[trim={0 0 0 0},clip,width=0.65\textwidth]{tt2.png}	%%quinemcclusky
+	\caption{Truth Table of Full Adder.}
+	\label{fig1}
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\subsection{PART 3}
+\begin{align*}
+\end{align*}
+\begin{figure}[ht]
+	\centering
+		\includegraphics[trim={0 0 0 0},clip,width=0.75\textwidth]{part3.png}
+	\caption{The circuit of the 4-bit Full Adder.}
+	\includegraphics[trim={0 0 0 0},clip,width=0.99\textwidth]{part3.1.png}
+	\caption{Test case 1: unsigned A+B.}
+		\label{fig1}
+\end{figure}
+	\begin{figure}[ht]
+	\includegraphics[trim={0 0 0 0},clip,width=0.99\textwidth]{part3.2.png}
+	\caption{Test case 2: signed A+B.}
+	\includegraphics[trim={0 0 0 0},clip,width=0.99\textwidth]{part3.3.png}	
+	\caption{Test case 3: unsigned A-B.}
+	\includegraphics[trim={0 0 0 0},clip,width=0.99\textwidth]{part3.4.png}	
+	\caption{Test case 4: signed A-B.}
+	\label{fig1}
+\end{figure}
+%%%%%%%%%%%%%%%
+\clearpage
+\subsection{PART 4}
+\begin{align*}
+\end{align*}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[trim={0 0 0 0},clip,width=0.99\textwidth]{part4.png}	
+	\caption{??.}
+	\label{fig1}
+\end{figure}
+\clearpage
+
+\section{DISCUSSION}
+This was the most challenging experiment we have faced so far. We used both Karnaugh Map and Quine-McCluskey methods to verify the first function given as a combination of 1-generating points and don't care points since this function is used in 3 of 4 parts in the experiment. In both methods, the don't care points count as 1 points, since this would help us create the biggest groups possible. Thanks to this, we were able to find the minimal covering sum with the least cost. We applied Quine-McCluskey method too and that gave us the same prime implicants, so we moved on to prime implicant chart.\\
+In this step, don’t care points count as 0 points, since we don’t really need to include those points in our covering sum. Assuming this, we finalized the prime implicant chart in 4 steps, as documented in the results section. Since the prime implicants we chose covered some don’t care points, indices 0 and 15, they turned up to be 1’s in our implementation. The other don’t care point, index 8, was left as 0, since it was not included in any implicant.\\ 
+After simplifications, experiments hardest part was over. We implemented the first circuit as a SOP (sum of products) form, using AND gates to form products and summing them up with OR gates. This was trivial.\\
+In part 2, converting to NAND was harder. We converted the first two layers where we created the products and summed them in pairs, by using the rule we mentioned in the methods part, but converting the final OR gate was a challenge. We found the solution by putting two inverters in its inputs, then changing it with a NAND gate.\\
+Part 3 was also not very hard, since implementation of logical circuits using multiplexers are easier than regular implementations. We just used the truth table to create outputs that depended on least significant bit, ‘d’. Then we connected other bits to the selection of MUX. We used don’t care points to help ourselves in this step. Since every selection of MUX was equivalent to 2 results in our original group, we divided the truth table into groups of two and assigned don’t cares the most convenient outputs. This way, we avoided using any NOT gates, and finished this part only by using static 1, which is logic high, static 0, which is logic low, and ‘d’ input.\\
+Part 4, decoder, was the hardest section for us, in part because it was containing 2 new functions, but mostly it was due to fact that decoder chipset was working in negative logic. Since the input/output combinations was different then those we have seen before, it took a little time to understand which inputs should we give to it in order to get correct results. We also was confused by three different enable signals, but we successfully got it working by following the datasheet. To solve the negative logic problem, we inverted the minterms we used before doing anything with them. We used this minterms and an OR gate to complete our circuits. This strategy helped us implement both functions in a quick manner, just by looking at the truth tables we prepared. This speed also helped us be the first group in class to finish all parts.
+
+
+\section{CONCLUSION}
+In conclusion of this experiment we proved arithmetical and logical operations on signed and unsigned binary numbers. We recalled the internal structures and principles of Half Adder and Full Adder. We implemented 4-bit Full Adder and worked with negative logic Arithmetic Logic Unit and D Flip-Flop for the first time.
+
+\newpage
+\addcontentsline{toc}{section}{\numberline {}REFERENCES}
+
+\bibliographystyle{unsrt}
+\bibliography{reference}
+
+\end{document}
+
